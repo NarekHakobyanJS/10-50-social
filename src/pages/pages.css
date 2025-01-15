@@ -6,7 +6,7 @@
     gap: 20px;
 }
 
-.usersPage {
+.usersPage, .profilePage {
     width: 1200px;
     margin: 0 auto;
 }
@@ -17,4 +17,45 @@
 
 .pagination-block > button {
     margin: 0 5px;
+}
+
+.profilePage {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.description b{
+ display: block;
+}
+
+
+.login-page {
+    margin: 0 auto;
+    width: 360px;
+    padding: 15px;
+    height: 260px;
+    border : 1px solid gray;
+    border-radius: 16px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap : 40px;
+
+}
+.form > input {
+    margin-top: 15px;
+}
+.login-input{
+    height: 35px;
+}
+
+.login-button {
+    height: 35px;
 }

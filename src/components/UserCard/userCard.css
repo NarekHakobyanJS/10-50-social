@@ -4,6 +4,8 @@
     border : 1px solid cyan;
     border-radius: 19px;
     padding: 10px;
+    text-decoration: none;
+    color : black;
 }
 
 .userCard > img {

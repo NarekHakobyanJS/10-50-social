@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router-dom';
 import Loyout from './components/Loyout/Loyout';
 import HomePage from './pages/HomePage';
 import UsersPage from './pages/UsersPage';
+import ProfilePage from './pages/ProfilePage';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path='/' element={<Loyout /> }>
           <Route index element={<HomePage /> }/>
           <Route path='/users' element={<UsersPage /> }/>
+          <Route path='/profile/:id' element={<ProfilePage /> }/>
         </Route>
       </Routes>
     </div>
