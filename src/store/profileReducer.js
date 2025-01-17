@@ -2,11 +2,12 @@ import { SocialAPI } from "../api/api"
 const GET_PROFILE = "GET_PROFILE"
 const GET_STATUS = 'GET_STATUS'
 const IS_FETCHING = 'IS_FETCHING'
+const CHANGE_STATUS = "CHANGE_STATUS"
 
 const initState = {
     profile: null,
     status: '',
-    isFetching: false
+    isFetching: false,
 }
 
 const profileRedcuer = (state = initState, action) => {
@@ -26,15 +27,29 @@ const profileRedcuer = (state = initState, action) => {
                 ...state,
                 isFetching: action.payload
             }
+        case CHANGE_STATUS:
+            return {
+                ...state,
+                status: action.payload
+            }
         default:
             return state
     }
 }
 
 const getProfileAC = (profile) => ({ type: GET_PROFILE, payload: profile })
-const getProfileStatusAC = (status) => ({ type: GET_PROFILE, payload: status })
+const getProfileStatusAC = (status) => ({ type: GET_STATUS, payload: status })
 const isFetchingAC = (isFetching) => ({ type: IS_FETCHING, payload: isFetching })
+const changeStatusAC = (status) => ({ type: CHANGE_STATUS, payload: status })
 
+export const changeStatusThunk = (newStatus) => {
+    return (dispatch) => {
+        SocialAPI.changeStatus(newStatus)
+            .then((res) => {
+                dispatch(changeStatusAC(res.data.data))
+            })
+    }
+}
 export const getProfileThunk = (id) => {
     return (dispatch) => {
         dispatch(isFetchingAC(true))
@@ -54,4 +69,5 @@ export const getPrfoileStatusThunk = (id) => {
             })
     }
 }
+
 export default profileRedcuer

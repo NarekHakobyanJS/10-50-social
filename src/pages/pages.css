@@ -34,7 +34,6 @@
     margin: 0 auto;
     width: 360px;
     padding: 15px;
-    height: 260px;
     border : 1px solid gray;
     border-radius: 16px;
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
@@ -48,6 +47,10 @@
     flex-direction: column;
     gap : 40px;
 
+}
+
+.form > p {
+    color : red;
 }
 .form > input {
     margin-top: 15px;
