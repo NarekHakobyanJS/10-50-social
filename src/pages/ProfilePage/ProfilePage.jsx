@@ -1,9 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { getProfileThunk, getPrfoileStatusThunk, changeStatusThunk } from '../store/profileReducer'
-import Loading from '../components/Loading/Loading'
-import user from '../assets/user.png'
+
+import { getProfileThunk, getPrfoileStatusThunk, changeStatusThunk } from '../../store/profileReducer'
+
+import Loading from '../../components/Loading/Loading'
+
+import user from '../../assets/user.png'
+
+import './ProfilePage.css'
+
 
 const ProfilePage = () => {
     const { profile, status, isFetching } = useSelector((state) => state.profilePage)

@@ -4,10 +4,7 @@ import { useDispatch, useSelector} from 'react-redux';
 import { getAllUsersThunkCreator } from './store/usersReducer';
 import { Routes, Route } from 'react-router-dom';
 import Loyout from './components/Loyout/Loyout';
-import HomePage from './pages/HomePage';
-import UsersPage from './pages/UsersPage';
-import ProfilePage from './pages/ProfilePage';
-
+import { HomePage, ProfilePage, UsersPage, LoginPage } from './pages';
 
 function App() {
 
@@ -24,11 +21,14 @@ function App() {
         <Route path='/' element={<Loyout /> }>
           <Route index element={<HomePage /> }/>
           <Route path='/users' element={<UsersPage /> }/>
+          <Route path='/login' element={<LoginPage /> }/>
           <Route path='/profile/:id' element={<ProfilePage /> }/>
         </Route>
       </Routes>
     </div>
   );
 }
+
+
 
 export default App;

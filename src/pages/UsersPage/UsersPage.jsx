@@ -1,10 +1,9 @@
-import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { changePageAC } from '../../store/usersReducer';
+import Loading from '../../components/Loading/Loading';
+import UserCard from '../../components/UserCard/UserCard';
 
-import UserCard from '../components/UserCard/UserCard';
-import './pages.css'
-import { changePageAC } from '../store/usersReducer';
-import Loading from '../components/Loading/Loading';
+import './UsersPage.css'
 
 const UsersPage = () => {
   const dispatch = useDispatch()

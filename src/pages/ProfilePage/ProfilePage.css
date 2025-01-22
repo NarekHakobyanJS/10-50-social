@@ -1,0 +1,10 @@
+.profilePage {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.description b{
+ display: block;
+}
+
