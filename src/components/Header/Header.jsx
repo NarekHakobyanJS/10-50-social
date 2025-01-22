@@ -12,6 +12,9 @@ const Header = () => {
             <NavLink to='/'>Home Page</NavLink>
             <NavLink to='/users'>Users Page</NavLink>
         </nav>
+        <div>
+          <button>Log Out</button>
+        </div>
     </header>
   )
 }

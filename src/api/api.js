@@ -26,5 +26,11 @@ export const SocialAPI = {
     },
     changeStatus(newStatus){
         return instance.put(`/profile/status`, {status : newStatus})
+    },
+    changeAvatar(file){
+        console.log(file);
+        const formData = new FormData()
+        formData.append('file', file)
+        return instance.put('/profile/photo', formData)
     }
 }

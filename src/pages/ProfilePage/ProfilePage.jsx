@@ -1,38 +1,32 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-import { getProfileThunk, getPrfoileStatusThunk, changeStatusThunk } from '../../store/profileReducer'
-
+import { getProfileThunk, getPrfoileStatusThunk, changeAvatarThunk } from '../../store/profileReducer'
 import Loading from '../../components/Loading/Loading'
+import UserStatus from '../../components/UserStatus/UserStatus'
 
 import user from '../../assets/user.png'
 
 import './ProfilePage.css'
 
 
+
 const ProfilePage = () => {
-    const { profile, status, isFetching } = useSelector((state) => state.profilePage)
-    const [editeStatus, setEditeStatus] = useState(false);
-    const [newStatus, setNewStatus] = useState(status)
+    const { profile, isFetching } = useSelector((state) => state.profilePage)
     const { id } = useParams()
     const dispatch = useDispatch()
-   
 
-    useEffect(() => {
-        setNewStatus(status)
-    }, [status])
+    const changeProfileAvatar = (e) => {
+        const file = e.target.files[0]
+        dispatch(changeAvatarThunk(file, localStorage.getItem('userId')))
+    }
 
     useEffect(() => {
         dispatch(getProfileThunk(id))
         dispatch(getPrfoileStatusThunk(id))
     }, [id])
 
-    const requestByStatus = () => {
-        setEditeStatus(false)
-        dispatch(changeStatusThunk(newStatus))
-        
-    }
     return (
         <>
             {isFetching
@@ -43,18 +37,12 @@ const ProfilePage = () => {
                     <div className='nameAndPhoto'>
                         <h2>{profile?.fullName}</h2>
                         <img src={profile?.photos?.large !== null ? profile?.photos?.large : user} />
-                        <h3>Status : </h3>
                         {
-                            editeStatus
-                            ? 
-                            <input 
-                            onBlur={requestByStatus}
-                            value={newStatus} 
-                            onChange={(e) => setNewStatus(e.target.value)}/>
-                            :
-                            <h4 onDoubleClick={() => setEditeStatus(true)}>{newStatus}</h4>
+                            profile?.userId === +localStorage.getItem('userId') &&  <input type='file' onChange={changeProfileAvatar} />
                         }
-                      
+                       
+                        <UserStatus id={id} />
+
                     </div>
                     <div className='description'>
                         <b>aboutMe : <i>{profile?.aboutMe}</i></b>
